@@ -1,15 +1,27 @@
 <html>
     <head>
-        <title> Contactos </title>
+        <title> Meu Blog </title>
     </head>
     <body>
-        <a href="https://www.w3schools.com/html/html_links.asp">Issoé um link</a>
-        <h1>David Franco</h1>
-        <h2>david@mail.com</h2>
-        <h3>tel. 6677857575</h3>
-        <ol>
-            <li>item 1</li>
-            <li>item 2</li>
-        </ol>
+        <h1> Meu Blog </h1>
+
+        {% for post in posts %}
+            <article class="post">
+                <header>
+                    <div>
+                        <h1>{{ post.title }}</h1>
+                        <div class="about">
+                            by {{ post.author }} on {{ post.created.strftime('%d/%m/%Y') }}
+                        </div>
+                    </div>
+                </header>
+                <p class="body"> {{post.body}} </p>
+            </article>
+            {% if not loop.last %}
+                <hr>
+            {% endif %}    
+        {% endfor %}
+ 
+        
     </body>
 </html>
